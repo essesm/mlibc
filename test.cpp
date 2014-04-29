@@ -7,8 +7,8 @@ class Object{ };
 int main()
 {
 	Node<int> n1(1);
-	int *i = n1.data();
-	assert(*i == 1);
+	int *i1 = n1.data();
+	assert(*i1 == 1);
 
 	Object o1;
 	Node<Object> n2(o1);
@@ -39,4 +39,29 @@ int main()
 	assert(p4.second == 69);
 	assert(p3 == p4);
 	assert(p2 != p4);
+
+	Node<bool> n5(false);
+	Node<bool> n6(n5);
+	Node<bool> n7;
+	n7 = n5;
+	n6 = n7;
+	n5 = n6;
+
+	int *i2 = new int(1);
+	Node<int> n8(*i2);
+	Node<int> n9(n8);
+	Node<int> n10;
+	n10 = n8;
+	Node<int*> n11(i2);
+	Node<int*> n12(n11);
+	delete i2;
+	i2 = 0;
+
+	Object *o4 = new Object();
+	Node<Object> n13(*o4);
+	Node<Object> n14(n13);
+	Node<Object> n15;
+	n15 = n13;
+	delete o4;
+	o4 = 0;
 }
