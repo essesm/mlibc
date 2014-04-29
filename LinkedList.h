@@ -17,8 +17,8 @@ public:
 	void push_back(const T &data);
 	void pop_front();
 	void pop_back();
-	T& front();
-	T& back();
+	T front() const;
+	T back() const;
 	unsigned int size() const;
 	bool empty() const;
 
@@ -64,7 +64,7 @@ bool LinkedList<T>::operator==(const LinkedList<T> &l) const
 
 	while (n1 != 0 && n2 != 0)
 	{
-		if (*n1->data() != *n2->data())
+		if (n1->data() != n2->data())
 		{
 			return false;
 		}
@@ -178,15 +178,15 @@ void LinkedList<T>::pop_back()
 }
 
 template <class T>
-T& LinkedList<T>::front()
+T LinkedList<T>::front() const
 {
-	return *head->data();
+	return head->data();
 }
 
 template <class T>
-T& LinkedList<T>::back()
+T LinkedList<T>::back() const
 {
-	return *tail->data();
+	return tail->data();
 }
 
 template <class T>
@@ -204,7 +204,7 @@ void LinkedList<T>::copy(const LinkedList<T> &l)
 	Node<T> *temp = l.head;
 	while (temp != 0)
 	{
-		push_back(*temp->data());
+		push_back(temp->data());
 		temp = temp->next();
 	}
 }

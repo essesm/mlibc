@@ -10,8 +10,8 @@ class Object{ };
 int main()
 {
 	Node<int> n1(1);
-	int *i1 = n1.data();
-	assert(*i1 == 1);
+	int i1 = n1.data();
+	assert(i1 == 1);
 
 	Object o1;
 	Node<Object> n2(o1);

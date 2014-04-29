@@ -12,12 +12,12 @@ public:
 	bool operator==(const Node<T> &n) const;
 	bool operator!=(const Node<T> &n) const;
 	~Node();
-	const T *&data() const;
+	const T &data() const;
 	const Node *&prev() const;
 	const Node *&next() const;
 	const Node *&left() const;
 	const Node *&right() const;
-	T *&data();
+	T data();
 	Node *&prev();
 	Node *&next();
 	Node *&left();
@@ -109,9 +109,9 @@ Node<T>::~Node()
 }
 
 template <class T>
-const T*& Node<T>::data() const
+const T& Node<T>::data() const
 {
-	return _data;
+	return *_data;
 }
 
 template <class T>
@@ -139,9 +139,9 @@ const Node<T>*& Node<T>::right() const
 }
 
 template <class T>
-T*& Node<T>::data()
+T Node<T>::data()
 {
-	return _data;
+	return *_data;
 }
 
 template <class T>
