@@ -9,6 +9,8 @@ class Node
 		Node(T data);
 		Node(const Node<T> &n);
 		Node<T>& operator=(const Node<T> &n);
+		bool operator==(const Node<T> &n) const;
+		bool operator!=(const Node<T> &n) const;
 		~Node();
 		T *data();
 		Node *prev();
@@ -56,6 +58,43 @@ Node<T>& Node<T>::operator=(const Node<T> &n)
 	}
 
 	return *this;
+}
+
+template <class T>
+bool Node<T>::operator==(const Node<T> &n) const
+{
+	if (*_data != *n._data)
+	{
+		return false;
+	}
+
+	if (_prev != n._prev)
+	{
+		return false;
+	}
+
+	if (_next != n._next)
+	{
+		return false;
+	}
+
+	if (_left != n._left)
+	{
+		return false;
+	}
+
+	if (_right != n._right)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+template <class T>
+bool Node<T>::operator!=(const Node<T> &n) const
+{
+	return !(*this == n);
 }
 
 template <class T>

@@ -62,6 +62,8 @@ int main()
 	Node<Object> n14(n13);
 	Node<Object> n15;
 	n15 = n13;
+	assert(n13 == n14);
+	assert(n14 == n15);
 	delete o4;
 	o4 = 0;
 }
