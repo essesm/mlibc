@@ -9,6 +9,8 @@ class Pair
 		Pair(T data1, U data2);
 		Pair(const Pair<T, U> &p);
 		Pair<T, U>& operator=(const Pair<T, U> &p);
+		bool operator==(const Pair<T, U> &p) const;
+		bool operator!=(const Pair<T, U> &p) const;
 		~Pair();
 		T first;
 		U second;
@@ -41,6 +43,28 @@ Pair<T, U>& Pair<T, U>::operator=(const Pair<T, U> &p)
 {
 	copy(p);
 	return *this;
+}
+
+template <class T, class U>
+bool Pair<T, U>::operator==(const Pair<T, U> &p) const
+{
+	if (first != p.first)
+	{
+		return false;
+	}
+
+	if (second != p.second)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+template <class T, class U>
+bool Pair<T, U>::operator!=(const Pair<T, U> &p) const
+{
+	return !(*this == p);
 }
 
 template <class T, class U>

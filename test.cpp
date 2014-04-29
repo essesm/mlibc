@@ -37,4 +37,6 @@ int main()
 	p4 = p3;
 	assert(p4.first == 1.23);
 	assert(p4.second == 69);
+	assert(p3 == p4);
+	assert(p2 != p4);
 }
