@@ -12,11 +12,11 @@ class Node
 		bool operator==(const Node<T> &n) const;
 		bool operator!=(const Node<T> &n) const;
 		~Node();
-		T *data();
-		Node *prev();
-		Node *next();
-		Node *left();
-		Node *right();
+		T *data() const;
+		Node *prev() const;
+		Node *next() const;
+		Node *left() const;
+		Node *right() const;
 	
 	private:
 		T *_data;
@@ -104,31 +104,31 @@ Node<T>::~Node()
 }
 
 template <class T>
-T* Node<T>::data()
+T* Node<T>::data() const
 {
 	return _data;
 }
 
 template <class T>
-Node<T>* Node<T>::prev()
+Node<T>* Node<T>::prev() const
 {
 	return _prev;
 }
 
 template <class T>
-Node<T>* Node<T>::next()
+Node<T>* Node<T>::next() const
 {
 	return _next;
 }
 
 template <class T>
-Node<T>* Node<T>::left()
+Node<T>* Node<T>::left() const
 {
 	return _left;
 }
 
 template <class T>
-Node<T>* Node<T>::right()
+Node<T>* Node<T>::right() const
 {
 	return _right;
 }
