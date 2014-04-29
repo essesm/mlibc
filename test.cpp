@@ -1,5 +1,6 @@
 #include "Node.h"
 #include "Pair.h"
+#include "LinkedList.h"
 #include <cassert>
 
 class Object{ };
@@ -66,4 +67,31 @@ int main()
 	assert(n14 == n15);
 	delete o4;
 	o4 = 0;
+
+	LinkedList<int> l;
+	assert(l.size() == 0);
+	assert(l.empty());
+	l.push_front(1);
+	assert(l.size() == 1);
+	assert(!l.empty());
+	assert(l.front() == 1);
+	assert(l.back() == 1);
+	l.push_front(2);
+	assert(l.size() == 2);
+	assert(!l.empty());
+	assert(l.front() == 1);
+	assert(l.front() == 2);
+	assert(l.back() == 1);
+	l.push_back(3);
+	assert(l.size() == 3);
+	assert(!l.empty());
+	assert(l.front() == 1);
+	assert(l.front() == 2);
+	assert(l.back() == 3);
+	l.pop_back();
+	assert(l.size() == 2);
+	assert(!l.empty());
+	assert(l.front() == 1);
+	assert(l.front() == 2);
+	assert(l.back() == 1);
 }

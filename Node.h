@@ -12,11 +12,16 @@ public:
 	bool operator==(const Node<T> &n) const;
 	bool operator!=(const Node<T> &n) const;
 	~Node();
-	T *data() const;
-	Node *prev() const;
-	Node *next() const;
-	Node *left() const;
-	Node *right() const;
+	const T *&data() const;
+	const Node *&prev() const;
+	const Node *&next() const;
+	const Node *&left() const;
+	const Node *&right() const;
+	T *&data();
+	Node *&prev();
+	Node *&next();
+	Node *&left();
+	Node *&right();
 
 private:
 	T *_data;
@@ -104,31 +109,61 @@ Node<T>::~Node()
 }
 
 template <class T>
-T* Node<T>::data() const
+const T*& Node<T>::data() const
 {
 	return _data;
 }
 
 template <class T>
-Node<T>* Node<T>::prev() const
+const Node<T>*& Node<T>::prev() const
 {
 	return _prev;
 }
 
 template <class T>
-Node<T>* Node<T>::next() const
+const Node<T>*& Node<T>::next() const
 {
 	return _next;
 }
 
 template <class T>
-Node<T>* Node<T>::left() const
+const Node<T>*& Node<T>::left() const
 {
 	return _left;
 }
 
 template <class T>
-Node<T>* Node<T>::right() const
+const Node<T>*& Node<T>::right() const
+{
+	return _right;
+}
+
+template <class T>
+T*& Node<T>::data()
+{
+	return _data;
+}
+
+template <class T>
+Node<T>*& Node<T>::prev()
+{
+	return _prev;
+}
+
+template <class T>
+Node<T>*& Node<T>::next()
+{
+	return _next;
+}
+
+template <class T>
+Node<T>*& Node<T>::left()
+{
+	return _left;
+}
+
+template <class T>
+Node<T>*& Node<T>::right()
 {
 	return _right;
 }
