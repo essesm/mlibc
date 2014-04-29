@@ -4,28 +4,28 @@
 template <class T>
 class Node
 {
-	public:
-		Node();
-		Node(T data);
-		Node(const Node<T> &n);
-		Node<T>& operator=(const Node<T> &n);
-		bool operator==(const Node<T> &n) const;
-		bool operator!=(const Node<T> &n) const;
-		~Node();
-		T *data() const;
-		Node *prev() const;
-		Node *next() const;
-		Node *left() const;
-		Node *right() const;
-	
-	private:
-		T *_data;
-		Node *_prev;
-		Node *_next;
-		Node *_left;
-		Node *_right;
-		void clear();
-		void copy(const Node<T> &n);
+public:
+	Node();
+	Node(T data);
+	Node(const Node<T> &n);
+	Node<T>& operator=(const Node<T> &n);
+	bool operator==(const Node<T> &n) const;
+	bool operator!=(const Node<T> &n) const;
+	~Node();
+	T *data() const;
+	Node *prev() const;
+	Node *next() const;
+	Node *left() const;
+	Node *right() const;
+
+private:
+	T *_data;
+	Node *_prev;
+	Node *_next;
+	Node *_left;
+	Node *_right;
+	void clear();
+	void copy(const Node<T> &n);
 };
 
 template <class T>

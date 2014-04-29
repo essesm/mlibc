@@ -4,19 +4,19 @@
 template <class T, class U>
 class Pair
 {
-	public:
-		Pair();
-		Pair(T data1, U data2);
-		Pair(const Pair<T, U> &p);
-		Pair<T, U>& operator=(const Pair<T, U> &p);
-		bool operator==(const Pair<T, U> &p) const;
-		bool operator!=(const Pair<T, U> &p) const;
-		~Pair();
-		T first;
-		U second;
+public:
+	Pair();
+	Pair(T data1, U data2);
+	Pair(const Pair<T, U> &p);
+	Pair<T, U>& operator=(const Pair<T, U> &p);
+	bool operator==(const Pair<T, U> &p) const;
+	bool operator!=(const Pair<T, U> &p) const;
+	~Pair();
+	T first;
+	U second;
 
-	private:
-		void copy(const Pair<T, U> &p);
+private:
+	void copy(const Pair<T, U> &p);
 };
 
 template <class T, class U>
