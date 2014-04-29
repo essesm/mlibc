@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Pair.h"
 #include <cassert>
 
 class Object{ };
@@ -22,4 +23,9 @@ int main()
 	Node<Object*> n4(o3);
 	delete o3;
 	o3 = 0;
+
+	Pair<int, double> p1;
+	Pair<double, int> p2(3.14, 9);
+	assert(p2.first == 3.14);
+	assert(p2.second == 9);
 }
