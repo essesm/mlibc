@@ -28,4 +28,13 @@ int main()
 	Pair<double, int> p2(3.14, 9);
 	assert(p2.first == 3.14);
 	assert(p2.second == 9);
+	Pair<double, int> p3(p2);
+	assert(p2.first == p3.first);
+	assert(p2.second == p3.second);
+	p3.first = 1.23;
+	p3.second = 69;
+	Pair<double, int> p4;
+	p4 = p3;
+	assert(p4.first == 1.23);
+	assert(p4.second == 69);
 }
