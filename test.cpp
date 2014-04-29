@@ -3,6 +3,8 @@
 #include "LinkedList.h"
 #include <cassert>
 
+using namespace std;
+
 class Object{ };
 
 int main()
@@ -63,8 +65,6 @@ int main()
 	Node<Object> n14(n13);
 	Node<Object> n15;
 	n15 = n13;
-	assert(n13 == n14);
-	assert(n14 == n15);
 	delete o4;
 	o4 = 0;
 
@@ -79,19 +79,25 @@ int main()
 	l.push_front(2);
 	assert(l.size() == 2);
 	assert(!l.empty());
-	assert(l.front() == 1);
 	assert(l.front() == 2);
 	assert(l.back() == 1);
 	l.push_back(3);
 	assert(l.size() == 3);
 	assert(!l.empty());
-	assert(l.front() == 1);
 	assert(l.front() == 2);
 	assert(l.back() == 3);
 	l.pop_back();
 	assert(l.size() == 2);
 	assert(!l.empty());
-	assert(l.front() == 1);
 	assert(l.front() == 2);
 	assert(l.back() == 1);
+
+	LinkedList<int> l1(l);
+	assert(l == l1);
+	assert(l1.size() == 2);
+	assert(!l1.empty());
+	l1.pop_back();
+	assert(l != l1);
+
+	return 0;
 }

@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -Wall -Wextra -pedantic -DNDEBUG
+CXXFLAGS := -Wall -Wextra -pedantic
 LD := g++
 LDFLAGS := -O3
 OBJS := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
