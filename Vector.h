@@ -35,7 +35,7 @@ template <class T>
 Vector<T>::Vector()
 	:vector(0), _size(0), _capacity(1)
 {
-	vector = new T();
+	vector = new T[_capacity];
 }
 
 template <class T>
@@ -167,7 +167,7 @@ bool Vector<T>::empty() const
 template <class T>
 void Vector<T>::clear()
 {
-	delete vector;
+	delete[] vector;
 	vector = 0;
 }
 
