@@ -12,6 +12,7 @@ public:
 	bool operator!=(const Vector<T> &v) const;
 	~Vector();
 	void push_back(const T &data);
+	void pop_back();
 	const T& front() const;
 	const T& back() const;
 	const T& operator[](unsigned int i) const;
@@ -21,7 +22,9 @@ public:
 	T& operator[](unsigned int i);
 	T& at(unsigned int i);
 	unsigned int size() const;
+	unsigned int capacity() const;
 	bool empty() const;
+	void reserve(unsigned int capacity);
 
 private:
 	T *vector;
@@ -91,7 +94,23 @@ Vector<T>::~Vector()
 template <class T>
 void Vector<T>::push_back(const T &data)
 {
+	if (_size == _capacity)
+	{
+		reserve(2 * _capacity);
+	}
 
+	vector[_size++] = data;
+}
+
+template <class T>
+void Vector<T>::pop_back()
+{
+	if (_size == 0)
+	{
+		return;
+	}
+
+	_size--;
 }
 
 template <class T>
@@ -159,9 +178,31 @@ unsigned int Vector<T>::size() const
 }
 
 template <class T>
+unsigned int Vector<T>::capacity() const
+{
+	return _capacity;
+}
+
+template <class T>
 bool Vector<T>::empty() const
 {
 	return _size == 0;
+}
+
+template <class T>
+void Vector<T>::reserve(unsigned int capacity)
+{
+	_capacity = capacity;
+
+	T *temp = new T[_capacity];
+
+	for (unsigned int i = 0; i < _size; i++)
+	{
+		temp[i] = vector[i];
+	}
+
+	delete[] vector;
+	vector = temp;
 }
 
 template <class T>
@@ -169,12 +210,21 @@ void Vector<T>::clear()
 {
 	delete[] vector;
 	vector = 0;
+	_size = 0;
 }
 
 template <class T>
 void Vector<T>::copy(const Vector<T> &v)
 {
+	_capacity = v._capacity;
+	_size = v._size;
 
+	vector = new T[_capacity];
+
+	for (unsigned int i = 0; i < _size; i++)
+	{
+		vector[i] = v.vector[i];
+	}
 }
 
 #endif /* __VECTOR_H__ */

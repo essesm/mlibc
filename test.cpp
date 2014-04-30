@@ -101,7 +101,49 @@ int main()
 	assert(l != l1);
 
 	Vector<int> v1;
-//	v1.at(3);
+	v1.push_back(1);
+	assert(v1[0] == 1);
+	assert(v1.at(0) == 1);
+	assert(v1.back() == 1);
+	assert(v1.size() == 1);
+	assert(v1.capacity() == 1);
+	assert(!v1.empty());
+
+	v1.push_back(2);
+	assert(v1[1] == 2);
+	assert(v1.at(1) == 2);
+	assert(v1.back() == 2);
+	assert(v1.size() == 2);
+	assert(v1.capacity() == 2);
+	assert(!v1.empty());
+
+	v1.push_back(3);
+	assert(v1[2] == 3);
+	assert(v1.at(2) == 3);
+	assert(v1.back() == 3);
+	assert(v1.size() == 3);
+	assert(v1.capacity() == 4);
+	assert(!v1.empty());
+
+	v1.pop_back();
+	assert(v1.back() == 2);
+	assert(v1.size() == 2);
+	assert(v1.capacity() == 4);
+
+	Vector<int> v2(v1);
+	assert(v1 == v2);
+	assert(v2[0] == 1);
+	assert(v2[1] == 2);
+	assert(v2.size() == 2);
+	assert(v2.capacity() == 4);
+	assert(!v2.empty());
+	v1.pop_back();
+	v1.push_back(10);
+	assert(v1 != v2);
+
+	Vector<int> v3;
+	v3 = v2;
+	assert(v2 == v3);
 
 	return 0;
 }
