@@ -13,15 +13,15 @@ public:
 	bool operator!=(const Node<T> &n) const;
 	~Node();
 	const T &data() const;
-	const Node *&prev() const;
-	const Node *&next() const;
-	const Node *&left() const;
-	const Node *&right() const;
-	T data();
-	Node *&prev();
-	Node *&next();
-	Node *&left();
-	Node *&right();
+	const Node*& prev() const;
+	const Node*& next() const;
+	const Node*& left() const;
+	const Node*& right() const;
+	T& data();
+	Node*& prev();
+	Node*& next();
+	Node*& left();
+	Node*& right();
 
 private:
 	T *_data;
@@ -139,7 +139,7 @@ const Node<T>*& Node<T>::right() const
 }
 
 template <class T>
-T Node<T>::data()
+T& Node<T>::data()
 {
 	return *_data;
 }

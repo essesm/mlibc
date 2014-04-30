@@ -17,8 +17,10 @@ public:
 	void push_back(const T &data);
 	void pop_front();
 	void pop_back();
-	T front() const;
-	T back() const;
+	const T& front() const;
+	const T& back() const;
+	T& front();
+	T& back();
 	unsigned int size() const;
 	bool empty() const;
 
@@ -178,13 +180,25 @@ void LinkedList<T>::pop_back()
 }
 
 template <class T>
-T LinkedList<T>::front() const
+const T& LinkedList<T>::front() const
 {
 	return head->data();
 }
 
 template <class T>
-T LinkedList<T>::back() const
+const T& LinkedList<T>::back() const
+{
+	return tail->data();
+}
+
+template <class T>
+T& LinkedList<T>::front()
+{
+	return head->data();
+}
+
+template <class T>
+T& LinkedList<T>::back()
 {
 	return tail->data();
 }

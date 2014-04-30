@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "Pair.h"
 #include "LinkedList.h"
+#include "Vector.h"
 #include <cassert>
 
 using namespace std;
@@ -98,6 +99,9 @@ int main()
 	assert(!l1.empty());
 	l1.pop_back();
 	assert(l != l1);
+
+	Vector<int> v1;
+//	v1.at(3);
 
 	return 0;
 }
