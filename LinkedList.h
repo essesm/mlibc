@@ -24,6 +24,25 @@ public:
 	unsigned int size() const;
 	bool empty() const;
 
+	class Iterator
+	{
+	public:
+		Iterator();
+		Iterator(const Iterator &i);
+		bool operator==(const Iterator &i) const;
+		bool operator!=(const Iterator &i) const;
+		T& operator*() const;
+		Iterator& operator++();
+		Iterator& operator--();
+		~Iterator();
+		Iterator begin();
+		Iterator end();
+
+	private:
+		Iterator(Node<T> *n);
+		Node<T> *node;
+	};
+
 private:
 	Node<T> *head;
 	Node<T> *tail;
