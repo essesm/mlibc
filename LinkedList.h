@@ -35,13 +35,15 @@ public:
 		Iterator& operator++();
 		Iterator& operator--();
 		~Iterator();
-		Iterator begin();
-		Iterator end();
 
 	private:
 		Iterator(Node<T> *n);
 		Node<T> *node;
+//		friend class LinkedList<T>;
 	};
+
+	Iterator begin();
+	Iterator end();
 
 private:
 	Node<T> *head;
@@ -252,6 +254,92 @@ template <class T>
 bool LinkedList<T>::empty() const
 {
 	return _size == 0;
+}
+
+template <class T>
+LinkedList<T>::Iterator::Iterator()
+	:node(0)
+{
+
+}
+
+template <class T>
+LinkedList<T>::Iterator::Iterator(const Iterator &i)
+{
+	node = i.node;
+}
+
+template <class T>
+LinkedList<T>::Iterator::Iterator(Node<T> *n)
+	:node(n)
+{
+
+}
+
+template <class T>
+bool LinkedList<T>::Iterator::operator==(const Iterator &i) const
+{
+	return node == i.node;
+}
+
+template <class T>
+bool LinkedList<T>::Iterator::operator!=(const Iterator &i) const
+{
+	return !(*this == i);
+}
+
+template <class T>
+T& LinkedList<T>::Iterator::operator*() const
+{
+	return node->data();
+}
+
+template <class T>
+typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++()
+{
+	if (node != 0)
+	{
+		node = node->next();
+	}
+	else
+	{
+		node = head;
+	}
+
+	return *this;
+}
+
+template <class T>
+typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator--()
+{
+	if (node != 0)
+	{
+		node = node->next();
+	}
+	else
+	{
+		node = tail;
+	}
+
+	return *this;
+}
+
+template <class T>
+LinkedList<T>::Iterator::~Iterator()
+{
+
+}
+
+template <class T>
+typename LinkedList<T>::Iterator LinkedList<T>::begin()
+{
+	return Iterator(head);
+}
+
+template <class T>
+typename LinkedList<T>::Iterator LinkedList<T>::end()
+{
+	return Iterator(0);
 }
 
 #endif /* __LINKED_LIST_H__ */
