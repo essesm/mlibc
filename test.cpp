@@ -145,5 +145,30 @@ int main()
 	v3 = v2;
 	assert(v2 == v3);
 
+	LinkedList<int> l2;
+	for (int i = 0; i < 10; i++)
+	{
+		l2.push_back(i);
+	}
+
+	int temp  = 0;
+	LinkedList<int>::Iterator i = l2.begin();
+	for (LinkedList<int>::Iterator i = l2.begin(); i != l2.end(); ++i)
+	{
+		assert(*i == temp++);
+	}
+
+	i = l2.end();
+	while (--i != l2.begin())
+	{
+		assert(*i == --temp);
+	}
+
+	temp = 0;
+	for (LinkedList<int>::Iterator i = l2.begin(); i != l2.end(); i++)
+	{
+		assert(*i == temp++);
+	}
+
 	return 0;
 }

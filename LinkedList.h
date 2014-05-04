@@ -34,12 +34,16 @@ public:
 		T& operator*() const;
 		Iterator& operator++();
 		Iterator& operator--();
+		Iterator operator++(int);
+		Iterator operator--(int);
 		~Iterator();
 
 	private:
-		Iterator(Node<T> *n);
+		Iterator(Node<T> *head, Node<T> *tail, Node<T> *n);
+		Node<T> *head;
+		Node<T> *tail;
 		Node<T> *node;
-//		friend class LinkedList<T>;
+		friend class LinkedList;
 	};
 
 	Iterator begin();
@@ -258,20 +262,21 @@ bool LinkedList<T>::empty() const
 
 template <class T>
 LinkedList<T>::Iterator::Iterator()
-	:node(0)
+	:head(0), tail(0), node(0)
 {
 
 }
 
 template <class T>
 LinkedList<T>::Iterator::Iterator(const Iterator &i)
+	:head(i.head), tail(i.tail), node(i.node)
 {
-	node = i.node;
+
 }
 
 template <class T>
-LinkedList<T>::Iterator::Iterator(Node<T> *n)
-	:node(n)
+LinkedList<T>::Iterator::Iterator(Node<T> *head, Node<T> *tail, Node<T> *n)
+	:head(head), tail(tail), node(n)
 {
 
 }
@@ -314,7 +319,7 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator--()
 {
 	if (node != 0)
 	{
-		node = node->next();
+		node = node->prev();
 	}
 	else
 	{
@@ -322,6 +327,22 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator--()
 	}
 
 	return *this;
+}
+
+template <class T>
+typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator++(int)
+{
+	Iterator i(*this);
+	++*this;
+	return i;
+}
+
+template <class T>
+typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator--(int)
+{
+	Iterator i(*this);
+	--*this;
+	return i;
 }
 
 template <class T>
@@ -333,13 +354,13 @@ LinkedList<T>::Iterator::~Iterator()
 template <class T>
 typename LinkedList<T>::Iterator LinkedList<T>::begin()
 {
-	return Iterator(head);
+	return Iterator(head, tail, head);
 }
 
 template <class T>
 typename LinkedList<T>::Iterator LinkedList<T>::end()
 {
-	return Iterator(0);
+	return Iterator(head, tail, 0);
 }
 
 #endif /* __LINKED_LIST_H__ */
