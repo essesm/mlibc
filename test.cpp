@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Vector.h"
 #include <cassert>
+#include <iostream>
 
 using namespace std;
 
@@ -152,22 +153,29 @@ int main()
 	}
 
 	int temp  = 0;
-	LinkedList<int>::Iterator i = l2.begin();
 	for (LinkedList<int>::Iterator i = l2.begin(); i != l2.end(); ++i)
 	{
 		assert(*i == temp++);
-	}
-
-	i = l2.end();
-	while (--i != l2.begin())
-	{
-		assert(*i == --temp);
 	}
 
 	temp = 0;
 	for (LinkedList<int>::Iterator i = l2.begin(); i != l2.end(); i++)
 	{
 		assert(*i == temp++);
+	}
+
+	LinkedList<int>::Iterator i = l2.end();
+	while (i != l2.begin())
+	{
+		assert(*--i == --temp);
+	}
+
+	temp = 9;
+	i = l2.end();
+	i--;
+	while (i != l2.begin())
+	{
+		assert(*i-- == temp--);
 	}
 
 	return 0;

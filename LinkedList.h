@@ -334,6 +334,7 @@ typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator++(int)
 {
 	Iterator i(*this);
 	++*this;
+
 	return i;
 }
 
@@ -342,6 +343,7 @@ typename LinkedList<T>::Iterator LinkedList<T>::Iterator::operator--(int)
 {
 	Iterator i(*this);
 	--*this;
+
 	return i;
 }
 
