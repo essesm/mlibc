@@ -13,8 +13,8 @@ public:
 	bool operator==(const LinkedList<T> &l) const;
 	bool operator!=(const LinkedList<T> &l) const;
 	~LinkedList();
-	void push_front(const T &data);
-	void push_back(const T &data);
+	LinkedList<T>& push_front(const T &data);
+	LinkedList<T>& push_back(const T &data);
 	void pop_front();
 	void pop_back();
 	const T& front() const;
@@ -121,7 +121,7 @@ LinkedList<T>::~LinkedList()
 }
 
 template <class T>
-void LinkedList<T>::push_front(const T &data)
+LinkedList<T>& LinkedList<T>::push_front(const T &data)
 {
 	Node<T> *temp = new Node<T>(data);
 
@@ -138,10 +138,12 @@ void LinkedList<T>::push_front(const T &data)
 	head = temp;
 
 	_size++;
+
+	return *this;
 }
 
 template <class T>
-void LinkedList<T>::push_back(const T &data)
+LinkedList<T>& LinkedList<T>::push_back(const T &data)
 {
 	Node<T> *temp = new Node<T>(data);
 
@@ -158,6 +160,8 @@ void LinkedList<T>::push_back(const T &data)
 	tail = temp;
 
 	_size++;
+
+	return *this;
 }
 
 template <class T>

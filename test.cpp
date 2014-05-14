@@ -178,5 +178,18 @@ int main()
 		assert(*i-- == temp--);
 	}
 
+	LinkedList<int> l3;
+	l3.push_back(1).push_back(2).push_back(4);
+	assert(l3.size() == 3);
+	assert(l3.front() == 1);
+	assert(l3.back() == 4);
+
+	Vector<unsigned int> v4;
+	v4.push_back(0).push_back(1).push_back(2).push_back(3);
+	for (unsigned int i = 0; i < v4.size(); i++)
+	{
+		assert(v4.at(i) == i);
+	}
+
 	return 0;
 }

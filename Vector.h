@@ -11,7 +11,7 @@ public:
 	bool operator==(const Vector<T> &v) const;
 	bool operator!=(const Vector<T> &v) const;
 	~Vector();
-	void push_back(const T &data);
+	Vector<T>& push_back(const T &data);
 	void pop_back();
 	const T& front() const;
 	const T& back() const;
@@ -92,7 +92,7 @@ Vector<T>::~Vector()
 }
 
 template <class T>
-void Vector<T>::push_back(const T &data)
+Vector<T>& Vector<T>::push_back(const T &data)
 {
 	if (_size == _capacity)
 	{
@@ -100,6 +100,8 @@ void Vector<T>::push_back(const T &data)
 	}
 
 	vector[_size++] = data;
+
+	return *this;
 }
 
 template <class T>
