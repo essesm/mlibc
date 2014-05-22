@@ -96,8 +96,8 @@ bool LinkedList<T>::operator==(const LinkedList<T> &l) const
 			return false;
 		}
 
-		n1 = n1->next();
-		n2 = n2->next();
+		n1 = n1->next;
+		n2 = n2->next;
 	}
 
 	if (n1 == 0 && n2 == 0)
@@ -127,14 +127,14 @@ LinkedList<T>& LinkedList<T>::push_front(const T &data)
 
 	if (head != 0)
 	{
-		head->prev() = temp;
+		head->prev = temp;
 	}
 	else
 	{
 		tail = temp;
 	}
 
-	temp->next() = head;
+	temp->next = head;
 	head = temp;
 
 	_size++;
@@ -149,14 +149,14 @@ LinkedList<T>& LinkedList<T>::push_back(const T &data)
 
 	if (tail != 0)
 	{
-		tail->next() = temp;
+		tail->next = temp;
 	}
 	else
 	{
 		head = temp;
 	}
 
-	temp->prev() = tail;
+	temp->prev = tail;
 	tail = temp;
 
 	_size++;
@@ -173,11 +173,11 @@ void LinkedList<T>::pop_front()
 	}
 
 	Node<T> *temp = head;
-	head = head->next();
+	head = head->next;
 
 	if (head != 0)
 	{
-		head->prev() = 0;
+		head->prev = 0;
 	}
 
 	delete temp;
@@ -195,11 +195,11 @@ void LinkedList<T>::pop_back()
 	}
 
 	Node<T> *temp = tail;
-	tail = tail->prev();
+	tail = tail->prev;
 
 	if (tail != 0)
 	{
-		tail->next() = 0;
+		tail->next = 0;
 	}
 
 	delete temp;
@@ -248,7 +248,7 @@ void LinkedList<T>::copy(const LinkedList<T> &l)
 	while (temp != 0)
 	{
 		push_back(temp->data());
-		temp = temp->next();
+		temp = temp->next;
 	}
 }
 
@@ -308,7 +308,7 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator++()
 {
 	if (node != 0)
 	{
-		node = node->next();
+		node = node->next;
 	}
 	else
 	{
@@ -323,7 +323,7 @@ typename LinkedList<T>::Iterator& LinkedList<T>::Iterator::operator--()
 {
 	if (node != 0)
 	{
-		node = node->prev();
+		node = node->prev;
 	}
 	else
 	{

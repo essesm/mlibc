@@ -13,36 +13,28 @@ public:
 	bool operator!=(const Node<T> &n) const;
 	~Node();
 	const T &data() const;
-	const Node*& prev() const;
-	const Node*& next() const;
-	const Node*& left() const;
-	const Node*& right() const;
 	T& data();
-	Node*& prev();
-	Node*& next();
-	Node*& left();
-	Node*& right();
+	Node *prev;
+	Node *next;
+	Node *left;
+	Node *right;
 
 private:
 	T *_data;
-	Node *_prev;
-	Node *_next;
-	Node *_left;
-	Node *_right;
 	void clear();
 	void copy(const Node<T> &n);
 };
 
 template <class T>
 Node<T>::Node()
-	:_data(0), _prev(0), _next(0), _left(0), _right(0)
+	:prev(0), next(0), left(0), right(0), _data(0)
 {
 
 }
 
 template <class T>
 Node<T>::Node(T data)
-	:_prev(0), _next(0), _left(0), _right(0)
+	:prev(0), next(0), left(0), right(0)
 {
 	_data = new T(data);
 }
@@ -73,22 +65,22 @@ bool Node<T>::operator==(const Node<T> &n) const
 		return false;
 	}
 
-	if (_prev != n._prev)
+	if (prev != n.prev)
 	{
 		return false;
 	}
 
-	if (_next != n._next)
+	if (next != n.next)
 	{
 		return false;
 	}
 
-	if (_left != n._left)
+	if (left != n.left)
 	{
 		return false;
 	}
 
-	if (_right != n._right)
+	if (right != n.right)
 	{
 		return false;
 	}
@@ -115,57 +107,9 @@ const T& Node<T>::data() const
 }
 
 template <class T>
-const Node<T>*& Node<T>::prev() const
-{
-	return _prev;
-}
-
-template <class T>
-const Node<T>*& Node<T>::next() const
-{
-	return _next;
-}
-
-template <class T>
-const Node<T>*& Node<T>::left() const
-{
-	return _left;
-}
-
-template <class T>
-const Node<T>*& Node<T>::right() const
-{
-	return _right;
-}
-
-template <class T>
 T& Node<T>::data()
 {
 	return *_data;
-}
-
-template <class T>
-Node<T>*& Node<T>::prev()
-{
-	return _prev;
-}
-
-template <class T>
-Node<T>*& Node<T>::next()
-{
-	return _next;
-}
-
-template <class T>
-Node<T>*& Node<T>::left()
-{
-	return _left;
-}
-
-template <class T>
-Node<T>*& Node<T>::right()
-{
-	return _right;
 }
 
 template <class T>
@@ -182,10 +126,10 @@ template <class T>
 void Node<T>::copy(const Node<T> &n)
 {
 	_data = new T(*n._data);
-	_prev = n._prev;
-	_next = n._next;
-	_left = n._left;
-	_right = n._right;
+	prev = n.prev;
+	next = n.next;
+	left = n.left;
+	right = n.right;
 }
 
 #endif /* __NODE_H__ */
