@@ -2,12 +2,30 @@
 #include "Pair.h"
 #include "LinkedList.h"
 #include "Vector.h"
+#include "Less.h"
+#include "Greater.h"
 #include <cassert>
 #include <iostream>
 
 using namespace std;
 
 class Object{ };
+
+class Comparable
+{
+public:
+	Comparable():x(0) { }
+	int x;
+};
+
+class FunctionObject
+{
+public:
+	bool operator()(const Comparable &x, const Comparable &y) const
+	{
+		return x.x < y.x;
+	}
+};
 
 int main()
 {
@@ -190,6 +208,36 @@ int main()
 	{
 		assert(v4.at(i) == i);
 	}
+
+	Less<int> less;
+	assert(less(1, 2));
+
+	Greater<int> greater;
+	assert(greater(2, 1));
+
+	Node<int> n16(1);
+	Node<int> n17(2);
+	Node<int> n18(1);
+	assert(n16 < n17);
+	assert(n17 > n16);
+	assert(n16 <= n17);
+	assert(n17 >= n16);
+	assert(n16 != n17);
+	assert(n16 == n18);
+
+
+	Node<int, Greater<int> > n19(2);
+	Node<int, Greater<int> > n20(1);
+	assert(n19 < n20);
+
+	Comparable c1;
+	Comparable c2;
+	c1.x = 1;
+	c2.x = 2;
+	Node<Comparable, FunctionObject> n21(c1);
+	Node<Comparable, FunctionObject> n22(c2);
+	assert(n21 < n22);
+
 
 	return 0;
 }

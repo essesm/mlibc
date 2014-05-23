@@ -1,16 +1,22 @@
 #ifndef __NODE_H__ 
 #define __NODE_H__
 
-template <class T>
+#include "Less.h"
+
+template <class T, class C = Less<T> >
 class Node
 {
 public:
 	Node();
 	Node(T data);
-	Node(const Node<T> &n);
-	Node<T>& operator=(const Node<T> &n);
-	bool operator==(const Node<T> &n) const;
-	bool operator!=(const Node<T> &n) const;
+	Node(const Node<T, C> &n);
+	Node<T, C>& operator=(const Node<T, C> &n);
+	bool operator==(const Node<T, C> &n) const;
+	bool operator!=(const Node<T, C> &n) const;
+	bool operator<(const Node<T, C> &n) const;
+	bool operator>(const Node<T, C> &n) const;
+	bool operator<=(const Node<T, C> &n) const;
+	bool operator>=(const Node<T, C> &n) const;
 	~Node();
 	const T &data() const;
 	T& data();
@@ -22,31 +28,32 @@ public:
 private:
 	T *_data;
 	void clear();
-	void copy(const Node<T> &n);
+	void copy(const Node<T, C> &n);
+	C compare;
 };
 
-template <class T>
-Node<T>::Node()
+template <class T, class C>
+Node<T, C>::Node()
 	:prev(0), next(0), left(0), right(0), _data(0)
 {
 
 }
 
-template <class T>
-Node<T>::Node(T data)
+template <class T, class C>
+Node<T, C>::Node(T data)
 	:prev(0), next(0), left(0), right(0)
 {
 	_data = new T(data);
 }
 
-template <class T>
-Node<T>::Node(const Node<T> &n)
+template <class T, class C>
+Node<T, C>::Node(const Node<T, C> &n)
 {
 	copy(n);
 }
 
-template <class T>
-Node<T>& Node<T>::operator=(const Node<T> &n)
+template <class T, class C>
+Node<T, C>& Node<T, C>::operator=(const Node<T, C> &n)
 {
 	if (this != &n)
 	{
@@ -57,14 +64,9 @@ Node<T>& Node<T>::operator=(const Node<T> &n)
 	return *this;
 }
 
-template <class T>
-bool Node<T>::operator==(const Node<T> &n) const
+template <class T, class C>
+bool Node<T, C>::operator==(const Node<T, C> &n) const
 {
-	if (*_data != *n._data)
-	{
-		return false;
-	}
-
 	if (prev != n.prev)
 	{
 		return false;
@@ -85,35 +87,59 @@ bool Node<T>::operator==(const Node<T> &n) const
 		return false;
 	}
 
-	return true;
+	return !(*this < n) && !(*this > n);
 }
 
-template <class T>
-bool Node<T>::operator!=(const Node<T> &n) const
+template <class T, class C>
+bool Node<T, C>::operator!=(const Node<T, C> &n) const
 {
 	return !(*this == n);
 }
 
-template <class T>
-Node<T>::~Node()
+template <class T, class C>
+bool Node<T, C>::operator<(const Node<T, C> &n) const
+{
+	return compare(*this->_data, *n._data);
+}
+
+template <class T, class C>
+bool Node<T, C>::operator>(const Node<T, C> &n) const
+{
+	return compare(*n._data, *this->_data);
+}
+
+template <class T, class C>
+bool Node<T, C>::operator<=(const Node<T, C> &n) const
+{
+	return *this < n || *this == n;
+}
+
+template <class T, class C>
+bool Node<T, C>::operator>=(const Node<T, C> &n) const
+{
+	return *this > n || *this == n;
+}
+
+template <class T, class C>
+Node<T, C>::~Node()
 {
 	clear();
 }
 
-template <class T>
-const T& Node<T>::data() const
+template <class T, class C>
+const T& Node<T, C>::data() const
 {
 	return *_data;
 }
 
-template <class T>
-T& Node<T>::data()
+template <class T, class C>
+T& Node<T, C>::data()
 {
 	return *_data;
 }
 
-template <class T>
-void Node<T>::clear()
+template <class T, class C>
+void Node<T, C>::clear()
 {
 	if (_data != 0)
 	{
@@ -122,8 +148,8 @@ void Node<T>::clear()
 	}
 }
 
-template <class T>
-void Node<T>::copy(const Node<T> &n)
+template <class T, class C>
+void Node<T, C>::copy(const Node<T, C> &n)
 {
 	_data = new T(*n._data);
 	prev = n.prev;
