@@ -2,12 +2,12 @@
 #define __NODE_H__
 
 #include "Less.h"
+#include <iostream>
 
 template <class T, class C = Less<T> >
 class Node
 {
 public:
-	Node();
 	Node(T data);
 	Node(const Node<T, C> &n);
 	Node<T, C>& operator=(const Node<T, C> &n);
@@ -18,8 +18,8 @@ public:
 	bool operator<=(const Node<T, C> &n) const;
 	bool operator>=(const Node<T, C> &n) const;
 	~Node();
-	const T &data() const;
-	T& data();
+	const T& data() const;
+	T& data();				// Return by reference means data can be modified
 	Node *prev;
 	Node *next;
 	Node *left;
@@ -31,13 +31,6 @@ private:
 	void copy(const Node<T, C> &n);
 	C compare;
 };
-
-template <class T, class C>
-Node<T, C>::Node()
-	:prev(0), next(0), left(0), right(0), _data(0)
-{
-
-}
 
 template <class T, class C>
 Node<T, C>::Node(T data)
