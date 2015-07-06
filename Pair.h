@@ -1,5 +1,5 @@
-#ifndef __PAIR_H__
-#define __PAIR_H__
+#ifndef PAIR_H
+#define PAIR_H
 
 template <class T, class U>
 class Pair

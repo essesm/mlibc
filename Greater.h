@@ -1,5 +1,5 @@
-#ifndef __GREATER_H__
-#define __GREATER_H__
+#ifndef GREATER_H
+#define GREATER_H
 
 template <class T>
 class Greater

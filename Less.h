@@ -1,5 +1,5 @@
-#ifndef __LESS_H__
-#define __LESS_H__
+#ifndef LESS_H
+#define LESS_H
 
 template <class T>
 class Less
