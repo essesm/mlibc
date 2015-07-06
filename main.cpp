@@ -1,11 +1,10 @@
 #include "Node.h"
-#include "Pair.h"
-#include "LinkedList.h"
-#include "Vector.h"
-#include "Less.h"
+// #include "Pair.h"
+// #include "LinkedList.h"
+// #include "Vector.h"
+// #include "Less.h"
 #include "Greater.h"
 #include <cassert>
-#include <iostream>
 #include <functional>
 
 using namespace std;
@@ -25,21 +24,21 @@ public:
 	}
 };
 
-// class Comparable
-// {
-// public:
-// 	Comparable():x(0) { }
-// 	int x;
-// };
-// 
-// class FunctionObject
-// {
-// public:
-// 	bool operator()(const Comparable &x, const Comparable &y) const
-// 	{
-// 		return x.x < y.x;
-// 	}
-// };
+class Comparable
+{
+public:
+	Comparable():x(0) { }
+	int x;
+};
+
+class FunctionObject
+{
+public:
+	bool operator()(const Comparable &x, const Comparable &y) const
+	{
+		return x.x < y.x;
+	}
+};
 
 int main()
 {
@@ -60,14 +59,12 @@ int main()
 		assert(!(*intCompPtr)(2, 1));
 		assert(!(*intCompPtr)(1, 1));
 		delete intCompPtr;
-		intCompPtr = 0;
 
 		Less<double> *doubleCompPtr = new Less<double>();
 		assert((*doubleCompPtr)(1.2, 1.21));
 		assert(!(*doubleCompPtr)(1.21, 1.2));
 		assert(!(*doubleCompPtr)(1.21, 1.21));
 		delete doubleCompPtr;
-		doubleCompPtr = 0;
 	}
 
 	/* GREATER.H TEST */
@@ -87,14 +84,12 @@ int main()
 		assert(!(*intCompPtr)(1, 2));
 		assert(!(*intCompPtr)(1, 1));
 		delete intCompPtr;
-		intCompPtr = 0;
 
 		Greater<double> *doubleCompPtr = new Greater<double>();
 		assert((*doubleCompPtr)(1.21, 1.2));
 		assert(!(*doubleCompPtr)(1.2, 1.21));
 		assert(!(*doubleCompPtr)(1.21, 1.21));
 		delete doubleCompPtr;
-		doubleCompPtr = 0;
 	}
 
 	/* NODE.H INT TEST */
@@ -193,8 +188,6 @@ int main()
 
 		delete i1;
 		delete i2;
-		i1 = 0;
-		i2 = 0;
 	}
 
 	/* NODE.H INT AND INT* TEST */
@@ -222,8 +215,6 @@ int main()
 
 		delete i1;
 		delete i2;
-		i1 = 0;
-		i2 = 0;
 	}
 
 	/* DYNAMIC NODE.H INT TEST */
@@ -291,8 +282,6 @@ int main()
 
 		delete n1;
 		delete n2;
-		n1 = 0;
-		n2 = 0;
 	}
 
 	/* DYNAMIC NODE.H INT* TEST */
@@ -329,10 +318,6 @@ int main()
 		delete i2;
 		delete n1;
 		delete n2;
-		i1 = 0;
-		i2 = 0;
-		n1 = 0;
-		n2 = 0;
 	}
 
 	/* NODE.H OBJECT TEST */
@@ -443,10 +428,7 @@ int main()
 
 		delete o1;
 		delete o2;
-		o1 = 0;
-		o2 = 0;
 	}
-
 
 //	Node<int> n1(1);
 //	int i1 = n1.data();
