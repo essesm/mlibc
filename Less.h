@@ -14,4 +14,4 @@ bool Less<T>::operator()(const T &x, const T &y) const
 	return x < y;
 }
 
-#endif /* __LESS_H__ */
+#endif /* LESS_H */

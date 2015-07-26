@@ -229,4 +229,4 @@ void Vector<T>::copy(const Vector<T> &v)
 	}
 }
 
-#endif /* __VECTOR_H__ */
+#endif /* VECTOR_H */

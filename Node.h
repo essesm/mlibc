@@ -18,15 +18,16 @@ public:
 	bool operator<=(const Node<T, C> &n) const;
 	bool operator>=(const Node<T, C> &n) const;
 	~Node();
-	const T& data() const;
-	T& data();				// Return by reference means data can be modified
+//	const T& data() const;
+//	T& data();				// Return by reference means data can be modified
+    T data;
 	Node *prev;
 	Node *next;
 	Node *left;
 	Node *right;
 
 private:
-	T *_data;
+//	T *_data;
 	void clear();
 	void copy(const Node<T, C> &n);
 	C compare;
@@ -36,7 +37,8 @@ template <class T, class C>
 Node<T, C>::Node(T data)
 	:prev(0), next(0), left(0), right(0)
 {
-	_data = new T(data);
+    this->data = data;
+//	_data = new T(data);
 }
 
 template <class T, class C>
@@ -75,12 +77,12 @@ bool Node<T, C>::operator==(const Node<T, C> &n) const
 		return false;
 	}
 
-	if (right != n.right)
-	{
-		return false;
-	}
+    if (right != n.right)
+    {
+        return false;
+    }
 
-	return !(*this < n) && !(*this > n);
+    return *this <= n && *this >= n;
 }
 
 template <class T, class C>
@@ -92,13 +94,13 @@ bool Node<T, C>::operator!=(const Node<T, C> &n) const
 template <class T, class C>
 bool Node<T, C>::operator<(const Node<T, C> &n) const
 {
-	return compare(*this->_data, *n._data);
+	return compare(this->data, n.data);
 }
 
 template <class T, class C>
 bool Node<T, C>::operator>(const Node<T, C> &n) const
 {
-	return compare(*n._data, *this->_data);
+	return compare(n.data, this->data);
 }
 
 template <class T, class C>
@@ -119,36 +121,33 @@ Node<T, C>::~Node()
 	clear();
 }
 
-template <class T, class C>
-const T& Node<T, C>::data() const
-{
-	return *_data;
-}
+// template <class T, class C>
+// const T& Node<T, C>::data() const
+// {
+// 	return data;
+// }
 
-template <class T, class C>
-T& Node<T, C>::data()
-{
-	return *_data;
-}
+// template <class T, class C>
+// T& Node<T, C>::data()
+// {
+// 	return *_data;
+// }
 
 template <class T, class C>
 void Node<T, C>::clear()
 {
-	if (_data != 0)
-	{
-		delete _data;
-		_data = 0;
-	}
+
 }
 
 template <class T, class C>
 void Node<T, C>::copy(const Node<T, C> &n)
 {
-	_data = new T(*n._data);
+    this.data = n.data;
+//	_data = new T(*n._data);
 	prev = n.prev;
 	next = n.next;
 	left = n.left;
 	right = n.right;
 }
 
-#endif /* __NODE_H__ */
+#endif /* NODE_H */

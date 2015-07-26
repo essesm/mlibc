@@ -53,12 +53,8 @@ bool Pair<T, U>::operator==(const Pair<T, U> &p) const
 		return false;
 	}
 
-	if (second != p.second)
-	{
-		return false;
-	}
+	return second == p.second;
 
-	return true;
 }
 
 template <class T, class U>
@@ -80,4 +76,4 @@ void Pair<T, U>::copy(const Pair<T, U> &p)
 	second = p.second;
 }
 
-#endif /* __PAIR_H__ */
+#endif /* PAIR_H */

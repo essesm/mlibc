@@ -95,20 +95,20 @@ int main()
 	/* NODE.H INT TEST */
 	{
 		Node<int> n1(1);
-		assert(n1.data() == 1);
+		assert(n1.data == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		n1.data() = 2;			// Change node data
-		assert(n1.data() == 2);
+		n1.data = 2;			// Change node data
+		assert(n1.data == 2);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
 
 		Node<int> n2(2);
-		assert(n2.data() == 2);
+		assert(n2.data == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -128,14 +128,14 @@ int main()
 		assert(!(n2 < n1));
 		assert(!(n2 > n1));
 
-		n1.data() = 1;		// Change node data
-		assert(n1.data() == 1);
+		n1.data = 1;		// Change node data
+		assert(n1.data == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
 
-		assert(n2.data() == 2);
+		assert(n2.data == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -161,20 +161,20 @@ int main()
 		int *i1 = new int(1);
 		int *i2 = new int(2);
 		Node<int*> n1(i1);
-		assert(*n1.data() == 1);
+		assert(*n1.data == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		*n1.data() = *i2;		// Change node data
-		assert(*n1.data() == 2);
+		*n1.data = *i2;		// Change node data
+		assert(*n1.data == 2);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
 
 		Node<int*> n2(i2);
-		assert(*n2.data() == 2);
+		assert(*n2.data == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -182,7 +182,7 @@ int main()
 
 		// Equality operators with n1 containing a different address than n2
 		// Comparison operators hold no meaning
-		assert(*n1.data() == *n2.data());
+		assert(*n1.data == *n2.data);
 		assert(!(n1 == n2));
 		assert(n1 != n2);
 
@@ -195,19 +195,19 @@ int main()
 		int *i1 = new int(1);
 		int *i2 = new int(2);
 		Node<int> n1(*i1);
-		assert(n1.data() == 1);
+		assert(n1.data == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		n1.data() = *i2;		// Change node data
-		assert(n1.data() == 2);
+		n1.data = *i2;		// Change node data
+		assert(n1.data == 2);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		n1.data() = 3;			// Change node data
-		assert(n1.data() == 3);
+		n1.data = 3;			// Change node data
+		assert(n1.data == 3);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
@@ -220,20 +220,20 @@ int main()
 	/* DYNAMIC NODE.H INT TEST */
 	{
 		Node<int> *n1 = new Node<int>(1);
-		assert(n1->data() == 1);
+		assert(n1->data == 1);
 		assert(n1->prev == 0);
 		assert(n1->next == 0);
 		assert(n1->left == 0);
 		assert(n1->right == 0);
-		n1->data() = 2;			// Change node data
-		assert(n1->data() == 2);
+		n1->data = 2;			// Change node data
+		assert(n1->data == 2);
 		assert(n1->prev == 0);
 		assert(n1->next == 0);
 		assert(n1->left == 0);
 		assert(n1->right == 0);
 
 		Node<int> *n2 = new Node<int>(2);
-		assert(n2->data() == 2);
+		assert(n2->data == 2);
 		assert(n2->prev == 0);
 		assert(n2->next == 0);
 		assert(n2->left == 0);
@@ -253,14 +253,14 @@ int main()
 		assert(!(*n2 < *n1));
 		assert(!(*n2 > *n1));
 
-		n1->data() = 1;		// Change node data
-		assert(n1->data() == 1);
+		n1->data = 1;		// Change node data
+		assert(n1->data == 1);
 		assert(n1->prev == 0);
 		assert(n1->next == 0);
 		assert(n1->left == 0);
 		assert(n1->right == 0);
 
-		assert(n2->data() == 2);
+		assert(n2->data == 2);
 		assert(n2->prev == 0);
 		assert(n2->next == 0);
 		assert(n2->left == 0);
@@ -289,20 +289,20 @@ int main()
 		int *i1 = new int(1);
 		int *i2 = new int(2);
 		Node<int*> *n1 = new Node<int*>(i1);
-		assert(*n1->data() == 1);
+		assert(*n1->data == 1);
 		assert(n1->prev == 0);
 		assert(n1->next == 0);
 		assert(n1->left == 0);
 		assert(n1->right == 0);
-		*n1->data() = *i2;		// Change node data
-		assert(*n1->data() == 2);
+		*n1->data = *i2;		// Change node data
+		assert(*n1->data == 2);
 		assert(n1->prev == 0);
 		assert(n1->next == 0);
 		assert(n1->left == 0);
 		assert(n1->right == 0);
 
 		Node<int*> *n2 = new Node<int*>(i2);
-		assert(*n2->data() == 2);
+		assert(*n2->data == 2);
 		assert(n2->prev == 0);
 		assert(n2->next == 0);
 		assert(n2->left == 0);
@@ -310,7 +310,7 @@ int main()
 
 		// Equality operators with n1 containing a different address than n2
 		// Comparison operators hold no meaning
-		assert(*n1->data() == *n2->data());
+		assert(*n1->data == *n2->data);
 		assert(!(*n1 == *n2));
 		assert(*n1 != *n2);
 
@@ -325,14 +325,14 @@ int main()
 		Object o1;
 		o1.x = 1;
 		Node<Object, ObjectCompare> n1(o1);
-		assert(n1.data().x == o1.x);
-		assert(n1.data().x == 1);
+		assert(n1.data.x == o1.x);
+		assert(n1.data.x == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		n1.data().x = 2;			// Change node data
-		assert(n1.data().x == 2);
+		n1.data.x = 2;			// Change node data
+		assert(n1.data.x == 2);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
@@ -341,8 +341,8 @@ int main()
 		Object o2;
 		o2.x = 2;
 		Node<Object, ObjectCompare> n2(o2);
-		assert(n2.data().x == o2.x);
-		assert(n2.data().x == 2);
+		assert(n2.data.x == o2.x);
+		assert(n2.data.x == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -362,16 +362,16 @@ int main()
 		assert(!(n2 < n1));
 		assert(!(n2 > n1));
 
-		n1.data().x = 1;		// Change node data
-		assert(n1.data().x == o1.x);
-		assert(n1.data().x == 1);
+		n1.data.x = 1;		// Change node data
+		assert(n1.data.x == o1.x);
+		assert(n1.data.x == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
 
-		assert(n2.data().x == o2.x);
-		assert(n2.data().x == 2);
+		assert(n2.data.x == o2.x);
+		assert(n2.data.x == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -399,22 +399,22 @@ int main()
 		o1->x = 1;
 		o2->x = 2;
 		Node<Object*> n1(o1);
-		assert(n1.data()->x == o1->x);
-		assert(n1.data()->x == 1);
+		assert(n1.data->x == o1->x);
+		assert(n1.data->x == 1);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
-		*n1.data() = *o2;		// Change node data
-		assert(n1.data()->x == o2->x);
-		assert(n1.data()->x == 2);
+		*n1.data = *o2;		// Change node data
+		assert(n1.data->x == o2->x);
+		assert(n1.data->x == 2);
 		assert(n1.prev == 0);
 		assert(n1.next == 0);
 		assert(n1.left == 0);
 		assert(n1.right == 0);
 
 		Node<Object*> n2(o2);
-		assert(n2.data()->x == 2);
+		assert(n2.data->x == 2);
 		assert(n2.prev == 0);
 		assert(n2.next == 0);
 		assert(n2.left == 0);
@@ -422,7 +422,7 @@ int main()
 
 		// Equality operators with n1 containing a different address than n2
 		// Comparison operators hold no meaning
-		assert(n1.data()->x == n2.data()->x);
+		assert(n1.data->x == n2.data->x);
 		assert(!(n1 == n2));
 		assert(n1 != n2);
 

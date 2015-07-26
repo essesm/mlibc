@@ -14,4 +14,4 @@ bool Greater<T>::operator()(const T &x, const T &y) const
 	return x > y;
 }
 
-#endif /* __GREATER_H__ */
+#endif /* GREATER_H */

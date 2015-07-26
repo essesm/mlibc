@@ -19,8 +19,8 @@ public:
 	void pop_back();
 	const T& front() const;
 	const T& back() const;
-	T& front();
-	T& back();
+//	T& front();
+//	T& back();
 	unsigned int size() const;
 	bool empty() const;
 
@@ -220,17 +220,17 @@ const T& LinkedList<T>::back() const
 	return tail->data();
 }
 
-template <class T>
-T& LinkedList<T>::front()
-{
-	return head->data();
-}
-
-template <class T>
-T& LinkedList<T>::back()
-{
-	return tail->data();
-}
+// template <class T>
+// T& LinkedList<T>::front()
+// {
+// 	return head->data();
+// }
+//
+// template <class T>
+// T& LinkedList<T>::back()
+// {
+// 	return tail->data();
+// }
 
 template <class T>
 void LinkedList<T>::clear()
@@ -369,4 +369,4 @@ typename LinkedList<T>::Iterator LinkedList<T>::end()
 	return Iterator(head, tail, 0);
 }
 
-#endif /* __LINKED_LIST_H__ */
+#endif /* LINKED_LIST_H */
